@@ -490,6 +490,7 @@ class ShopController extends Controller
                 'out_trade_no'=>$out_trade_no,
             ]);
             $order_id=$order->id;
+
             foreach ($goods_ids as $k=>$goods_id){
                 $goods=Menu::where('id',$goods_id)->first();
                 $orderGood=ordergood::create([
@@ -507,6 +508,7 @@ class ShopController extends Controller
             }
         }catch (\Exception $e){
             DB::rollback();
+
         }
         return json_encode([
             "status"=> "true",
